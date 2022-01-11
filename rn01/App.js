@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet, YellowBox } from 'react-native'
-import Header from './src/header'
-import Generator from './src/generator'
-import NumList from './src/NumList'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import Input from './src/input'
 
 class App extends Component{
 
@@ -31,17 +29,7 @@ class App extends Component{
   render(){
     return (
       <View style ={styles.mainView}>
-        <Header name = {this.state.appName}/>
-          <View>
-          <Text
-            style={styles.mainText}
-            onPress={()=> alert('text touch event')}
-            >Hello world</Text>
-          </View>
-        <Generator add ={this.onAddRandomNum}/>
-        <NumList 
-          num= {this.state.random}
-          delete={this.onNumDelete}/>
+        <Input />
       </View>
     )
   }
@@ -50,10 +38,10 @@ class App extends Component{
 const styles = StyleSheet.create({
   mainView:{
     backgroundColor: 'white',
-    paddingTop: 50,
+    paddingTop: 20,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    // alignItems: 'center',
+    // justifyContent: 'center'
   },
   subView: {
     backgroundColor: 'yellow',
@@ -70,7 +58,7 @@ const styles = StyleSheet.create({
   mainText:{
     fontSize: 20,
     fontWeight: 'normal',
-    color: 'red',
+    color: 'black',
     padding: 20
   }
 })

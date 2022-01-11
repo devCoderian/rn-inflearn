@@ -14,7 +14,7 @@ const Generator = (props) => {
 
 const styles = StyleSheet.create({  
     generator:{
-        backgroundColor: '#D197CF',
+        // backgroundColor: '#D197CF',
         alignItems: 'center',
         padding: 5,
         width: '100%'
