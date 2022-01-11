@@ -9,7 +9,7 @@ const Header = (props) => {
             // onPress = {() => alert('확인')}
             //onLongPress = {() => alert('확인')} //오래눌러야 작동
             //onPressIn = {() => alert('helloworld')} //누르자마자 즉각적으로 반응
-            onPressOut={() => alert('helloworld')}
+            onPressOut={() => alert('helloworld')} //터치를 떼었을 떄 반응
         >
             <View>
                 <Text>{props.name}</Text>

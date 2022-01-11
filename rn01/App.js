@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
-import { View, Text, StyleSheet, ScrollView, Button, TextInput} from 'react-native'
-import Input from './src/input'
+import { View, Image, Text, StyleSheet, ScrollView, Button, TextInput, ActivityIndicator} from 'react-native'
+//import PickerComp from './src/picker'
+import { Picker } from '@react-native-picker/picker';
+import Slider from '@react-native-community/slider';
+import Cap from './assets/images/cap.png'
+import ModalComp from './src/modal';
 
 class App extends Component{
 
@@ -15,7 +19,9 @@ class App extends Component{
 
   state= {
     myTextInput: '',
-    alphabet: ['a', 'b', 'c', 'd']
+    alphabet: ['a', 'b', 'c', 'd'],
+    language: '',
+    value: 50,
    }
  
    onChangeInput = (e) => {
@@ -24,23 +30,59 @@ class App extends Component{
      });
    }
   
+   sliderValueChange = (val) => { 
+     this.setState({
+       value: val
+     })
+   }
   render(){
     return (
       <View style ={styles.mainView}>
+        {/* <Image 
+          source={{uri:'https://picsum.photos/id/237/200/300'}}
+          style={styles.image}
+          resizeMode='contain'
+          onLoadEnd={()=> alert('image Loaded!!')}/> */}
+        <ModalComp />
+        <Slider
+          style={{width: 300, height: 40}}
+          value={this.state.value}
+          minimumValue={0}
+          maximumValue={100}
+          minimumTrackTintColor="blue"
+          maximumTrackTintColor="red"
+          onValueChange={(val, idx) => this.sliderValueChange(val)}
+        />
+        <Text>
+          {this.state.value}
+        </Text>
+        <ActivityIndicator 
+        size="large"
+        color="green"
+        animating={true}
+        />
+
+        <Picker
+        selectedValue={this.state.language}
+        onValueChange={(itemValue, itemIndex) =>
+          this.setState({
+            language: itemValue
+          })
+        }>
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="javascript" />
+      </Picker>
          <TextInput
             value={this.state.myTextInput}
             style={styles.input}
             onChangeText={this.onChangeInput}
-            //multiline={true} //개행 기능
             maxLength={10} //글자수제한
-            //autoCapitalize={'none'} //대문자 자동수정 끄기
-            //editable={false} //text-input disabled 
-        
         />
         <Button
           title="Add Text Input"
           onPress={() => this.onAddTextInput()}
         />
+        <Text>{this.state.language}</Text>
         <ScrollView style={{width: '100%'}}>
           {
           this.state.alphabet.map((item, idx)=> (
@@ -52,13 +94,13 @@ class App extends Component{
   }
 }
 
+//image file
+
 const styles = StyleSheet.create({
   mainView:{
     backgroundColor: 'white',
     paddingTop: 20,
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center'
   },
   subView: {
     backgroundColor: 'yellow',
@@ -86,6 +128,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10
+  },
+  image: {
+    width: '100%',
+    height: 100
   }
 })
 //position default 왼쪽 위

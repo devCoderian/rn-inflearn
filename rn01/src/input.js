@@ -23,6 +23,7 @@ class Input extends Component{
         maxLength={10} //글자수제한
         //autoCapitalize={'none'} //대문자 자동수정 끄기
         //editable={false} //text-input disabled 
+    
         />
       </View>
     )
