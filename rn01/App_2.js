@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import Header from './src/header'
-import Generator from './src/generator'
-import NumList from './src/NumList'
+import Header from './src/comp/header'
+import Generator from './src/comp/generator'
+import NumList from './src/comp/NumList'
 
 class App extends Component{
 
